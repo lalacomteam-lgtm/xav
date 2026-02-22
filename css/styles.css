@@ -1,0 +1,353 @@
+/* ===== 리셋 & 기본 스타일 ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --blue-primary: #3366FF;
+    --black: #1a1a1a;
+    --white: #ffffff;
+    --gray-light: #f5f5f5;
+}
+
+body {
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--black);
+    background: var(--gray-light);
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ===== 프로모션 배너 ===== */
+.promo-banner {
+    background: var(--blue-primary);
+    color: var(--white);
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+/* ===== 메인 헤더 ===== */
+.main-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 40px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.main-header .hamburger {
+    order: -1;
+}
+
+.nav-left {
+    display: flex;
+    gap: 32px;
+}
+
+.nav-left a,
+.nav-right a {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: opacity 0.2s;
+}
+
+.nav-left a:hover,
+.nav-right a:hover {
+    opacity: 0.6;
+}
+
+.logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.account-icon,
+.cart-icon {
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+    margin-right: 4px;
+}
+
+.cart-link {
+    display: flex;
+    align-items: center;
+}
+
+.cart-count {
+    margin-left: 2px;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 28px;
+    height: 28px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.hamburger span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--black);
+    transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* ===== 모바일 메뉴 ===== */
+.mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--white);
+    z-index: 99;
+    padding: 100px 30px 40px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.mobile-menu.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.mobile-nav a {
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 2px;
+}
+
+/* ===== 히어로 섹션 ===== */
+.hero-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: calc(100vh - 140px);
+}
+
+.hero-left,
+.hero-right {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 500px;
+}
+
+.hero-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 원형 텍스트 오버레이 */
+.circular-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 180px;
+    height: 180px;
+    pointer-events: none;
+}
+
+.circular-text svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* 워터마크 */
+.watermark {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    font-size: 48px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: rgba(255, 255, 255, 0.25);
+    pointer-events: none;
+}
+
+/* ===== 모바일 반응형 ===== */
+@media (max-width: 1024px) {
+    .nav-left {
+        gap: 24px;
+    }
+    
+    .nav-left a,
+    .nav-right a {
+        font-size: 12px;
+    }
+    
+    .logo {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .promo-banner {
+        font-size: 12px;
+        padding: 8px 16px;
+    }
+    
+    .main-header {
+        padding: 16px 20px;
+    }
+    
+    .nav-left {
+        display: none;
+    }
+    
+    .hamburger {
+        display: flex;
+    }
+    
+    .logo {
+        font-size: 22px;
+    }
+    
+    .mobile-menu {
+        display: block;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
+    
+    .hero-left {
+        order: 1;
+    }
+    
+    .hero-right {
+        order: 2;
+    }
+    
+    .hero-image-wrapper {
+        min-height: 70vh;
+    }
+    
+    .circular-text {
+        width: 140px;
+        height: 140px;
+    }
+    
+    .circular-text svg text {
+        font-size: 11px;
+    }
+    
+    .watermark {
+        font-size: 36px;
+        bottom: 20px;
+        right: 20px;
+    }
+}
+
+/* 모바일: 햄버거 | 로고 | 아이콘 */
+@media (max-width: 768px) {
+    .main-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .main-header .nav-left {
+        display: none;
+    }
+    
+    .main-header .nav-right {
+        display: flex;
+        gap: 20px;
+    }
+    
+    .main-header .nav-right .nav-text,
+    .main-header .nav-right a[href="#board"] {
+        display: none;
+    }
+    
+    .main-header .account-link,
+    .main-header .cart-link {
+        display: flex;
+        align-items: center;
+    }
+    
+    .main-header .account-icon,
+    .main-header .cart-icon {
+        width: 22px;
+        height: 22px;
+        margin: 0;
+    }
+    
+    .main-header .cart-count {
+        font-size: 12px;
+        margin-left: 2px;
+    }
+    
+    .main-header .logo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}

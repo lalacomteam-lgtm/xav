@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover, interactive-widget=resizes-content">
+    <meta name="theme-color" content="#1a1a1a">
+    <title>로그인 - XAV</title>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    <main class="login-container">
+        <div class="login-card">
+            <h1 class="login-title">로그인</h1>
+            <p class="login-subtitle">XAV 계정으로 로그인하세요</p>
+
+            <form class="login-form" action="#" method="post" autocomplete="on">
+                <div class="input-group">
+                    <label for="email">이메일</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        placeholder="example@email.com" 
+                        required 
+                        autocomplete="email"
+                        inputmode="email"
+                    >
+                </div>
+                <div class="input-group">
+                    <label for="password">비밀번호</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        placeholder="비밀번호를 입력하세요" 
+                        required 
+                        autocomplete="current-password"
+                        minlength="8"
+                    >
+                </div>
+                <div class="form-options">
+                    <label class="checkbox-wrap">
+                        <input type="checkbox" name="remember" class="checkbox-input">
+                        <span class="checkbox-custom"></span>
+                        <span class="checkbox-label">로그인 상태 유지</span>
+                    </label>
+                    <a href="#find-password" class="link-text">비밀번호 찾기</a>
+                </div>
+                <button type="submit" class="btn-login">로그인</button>
+            </form>
+
+            <div class="divider">
+                <span>또는</span>
+            </div>
+
+            <div class="social-buttons">
+                <a href="#" class="btn-social" aria-label="카카오 로그인">
+                    <span class="btn-social-text">카카오로 로그인</span>
+                </a>
+                <a href="#" class="btn-social btn-social-google" aria-label="구글 로그인">
+                    <span class="btn-social-text">구글로 로그인</span>
+                </a>
+            </div>
+
+            <p class="signup-link">
+                계정이 없으신가요? <a href="#signup">회원가입</a>
+            </p>
+        </div>
+    </main>
+</body>
+</html>
