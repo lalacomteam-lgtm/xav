@@ -205,5 +205,9 @@ def index():
 
 if __name__ == "__main__":
     import uvicorn
+    import webbrowser
 
-    uvicorn.run(app, host="0.0.0.0", port=int(os.environ.get("PORT", "8000")))
+    port = int(os.environ.get("PORT", "8000"))
+    # 앱처럼 쓰도록 서버가 뜨면 브라우저를 자동으로 연다
+    threading.Timer(1.5, lambda: webbrowser.open(f"http://localhost:{port}")).start()
+    uvicorn.run(app, host="0.0.0.0", port=port)
