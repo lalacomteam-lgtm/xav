@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>급상승 영상 트래커</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header class="topbar">
+        <h1>🔥 급상승 영상 트래커</h1>
+        <div class="refresh-info">
+            <span id="lastScan">-</span>
+            <span id="countdown"></span>
+        </div>
+    </header>
+
+    <section class="controls">
+        <form id="scanForm">
+            <input type="text" id="keyword" placeholder="키워드 또는 #해시태그 입력" autocomplete="off" required>
+            <div class="platform-checks">
+                <label><input type="checkbox" value="youtube" checked> YouTube</label>
+                <label><input type="checkbox" value="tiktok" checked> TikTok</label>
+                <label><input type="checkbox" value="instagram" checked> Instagram</label>
+            </div>
+            <label class="opt" title="채널 평균 조회수 대비 최소 배수">
+                아웃라이어 기준
+                <select id="minRatio">
+                    <option value="2">2배 이상</option>
+                    <option value="3" selected>3배 이상</option>
+                    <option value="5">5배 이상</option>
+                    <option value="10">10배 이상</option>
+                </select>
+            </label>
+            <label class="opt" title="채널 평균을 구하지 못한 영상(신규 채널 등)도 제외">
+                <input type="checkbox" id="strictOutlier"> 평균 미확인 영상 제외
+            </label>
+            <button type="submit" id="scanBtn">스캔</button>
+        </form>
+        <div id="statuses" class="statuses"></div>
+    </section>
+
+    <main>
+        <div id="scanning" class="scanning hidden">⏳ 수집 중... (플랫폼당 수십 초 걸릴 수 있습니다)</div>
+        <div id="empty" class="empty">키워드를 입력하고 스캔을 시작하세요.</div>
+        <div id="results" class="results"></div>
+    </main>
+
+    <aside id="downloadPanel" class="download-panel">
+        <h2>⬇ 다운로드 <span id="dlRoot" class="dl-root"></span></h2>
+        <div id="downloads"></div>
+    </aside>
+
+    <!-- 저장 폴더 선택 모달 -->
+    <div id="folderModal" class="modal hidden">
+        <div class="modal-box">
+            <h3>영상 저장</h3>
+            <p id="modalTitle" class="modal-video-title"></p>
+            <label>저장 폴더
+                <input type="text" id="folderInput" list="folderList" placeholder="예: youtube/댄스챌린지">
+                <datalist id="folderList"></datalist>
+            </label>
+            <p class="hint">비워두면 <b>플랫폼/키워드</b> 폴더에 자동 분류됩니다.</p>
+            <div class="modal-actions">
+                <button id="modalCancel" type="button">취소</button>
+                <button id="modalSave" type="button" class="primary">저장 시작</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
